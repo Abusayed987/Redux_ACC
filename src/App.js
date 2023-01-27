@@ -1,10 +1,25 @@
-import Parent from './Pages/Parent';
+
+import { createContext, useState } from 'react';
+import Counter from './Pages/Counter';
+// import LongForm from './Pages/LongForm';
+
+// import ShortForm from './Pages/ShortForm';
+
+export const CounterContest = createContext()
 
 function App() {
+  const [counter, setCounter] = useState(0);
+
+  const valueInfo = { counter, setCounter };
+
   return (
-    <div>
-      <Parent />
-    </div>
+    <CounterContest.Provider value={valueInfo}>
+      <div>
+        <Counter></Counter>
+        {/* <LongForm /> */}
+        {/* <ShortForm /> */}
+      </div>
+    </CounterContest.Provider>
   );
 }
 
